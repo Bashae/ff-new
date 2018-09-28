@@ -1,0 +1,22 @@
+<ion-card class="card-with-background">
+  <img src="/assets/imgs/backgrounds/{{cardBackground}}.jpg" alt="">
+  <button ion-button icon-only class="button--favorite" (click)="favoritePost(postItem)" [class.active]="favorited">
+    <ion-icon name="star"></ion-icon>
+  </button>
+  <button ion-button icon-only class="button--share" (click)="sharePost(postItem)">
+    <ion-icon name="share"></ion-icon>
+  </button>
+  <div class="card-title" [style.backgroundColor]="cardColor" [style.color]="cardTextColor">
+    {{text}}
+  </div>
+</ion-card>
+<ion-row class="post-vote--stati">
+  <button ion-button icon-only class="button--vote-negative button--vote" [class.active]="liked == true && type == 'bad'" (click)="likePost(postItem, 'bad')">
+    <ion-icon name="home"></ion-icon>
+    <span class="h-button-text--bottom">Chaotic</span>
+  </button>
+  <button ion-button icon-only class="button--vote-positive button--vote" [class.active]="liked == true && type == 'good'" (click)="likePost(postItem, 'good')">
+    <ion-icon name="cloud"></ion-icon>
+    <span class="h-button-text--bottom">Lawful</span>
+  </button>
+</ion-row> 

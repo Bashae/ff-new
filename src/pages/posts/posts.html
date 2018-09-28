@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Posts</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <sinogram *ngIf="auth && auth.isLoggedIn"></sinogram>
+  <ion-refresher (ionRefresh)="pullToRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <post *ngFor="let post of posts" [postItem]="post"></post>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!hideScroll">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

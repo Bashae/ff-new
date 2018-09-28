@@ -1,0 +1,103 @@
+post {
+
+    .button--favorite, .button--share, .button--comment {
+        background: transparent;
+        box-shadow: none;
+        position: absolute;
+        color: rgba(219, 118, 118, 0.25);
+
+        &.active {
+            color: #fff;
+        }
+    }
+
+    .button--favorite, .button--share {
+        top: 0;
+    }
+
+    .button--comment {
+        bottom: 0;
+        right: 0;
+    }
+
+    .button--favorite {
+        left: 0;
+    }
+
+    .button--share {
+        right: 0;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+
+    .custom-padding--row {
+        border-top: 1px solid #333;
+        padding-top: 0;
+    }
+    .card {
+        margin: 0;
+        margin-top: 25px;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .post-vote--stati {
+        background: white;
+        display: flex;
+        border-bottom: 1px solid #ddd;
+        margin-top: 0;
+        // left: 0;
+        // bottom: -50px;
+        // width: 100%;
+
+        .button-inner {
+            display: block;
+        }
+        
+        .button--vote {
+            background-color: transparent;
+            border-radius: 0;
+            box-shadow:none;
+            color: #333;
+            margin: 0;
+            min-height: 55px;
+            width: 50%;
+
+            ion-icon {
+                display: block;
+                margin-top: 10px;
+                width: 100%;
+            }
+
+            .h-button-text--bottom {
+                display: block;
+                font-size: 12px;
+                margin-top: 7px;
+                width: 100%;
+            }
+        }
+        .button--vote-negative {
+            color: rgb(205, 92, 92);
+
+            &.active {
+                background-color: rgb(205, 92, 92);
+                color: #fff;
+            }
+        }
+        .button--vote-positive {
+            border-left: 1px solid rgb(228, 228, 228);
+            color: rgb(0, 167, 223);
+            float: right;
+
+            &.active {
+                background-color: rgb(0, 167, 223);
+                color: #fff;
+            }
+        }
+    }
+}

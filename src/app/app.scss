@@ -14,3 +14,138 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.swiper-slide {
+    display: block;
+    padding-top: 20px;
+}
+
+.content--main {
+    font-size: 28px !important;
+    line-height: 1.25 !important;
+}
+
+.post--stati .button-inner {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.header--menu, 
+.header--new-post {
+    position: relative;
+}
+
+.button--edit {
+    color: #424242;
+    background-color: transparent;
+    box-shadow: none !important;
+    float: right;
+    box-shadow: none;
+    position: absolute;
+    top: 7px;
+    right: 5px;
+}
+
+.button--home {
+    color: #424242 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    float: left;
+}
+
+.button--menu-close,
+.button--modal-close {
+    position: absolute;
+    top: 7px;
+    right: 0;
+    background: transparent !important;
+    z-index: 5;
+    box-shadow: none !important;
+    color: #333;
+}
+
+.toolbar-title-md {
+    font-size: 16px;
+}
+
+.custom-title .toolbar-title-md {
+    padding-left: 0;
+    top: 15px;
+    position: relative;
+}
+
+.button--login-status {
+    background: transparent !important;
+    box-shadow: none !important;
+
+    right: 50px;
+    &.active {
+        color: indianred;
+    }
+}
+
+button.button--edit.button.button-md.button-default.button-default-md:hover {
+    background: transparent;
+}
+
+.tab-button[aria-selected=true] .tab-button-icon[aria-label="flame"] {
+    color: indianred;
+}
+
+.tab-button[aria-selected=true] .tab-button-icon[aria-label="cloud"] {
+    color: #00a7df;
+}
+
+// .card-with-background {
+//     position: relative;
+//     text-align: center;
+    
+//     img {
+//         display: block;
+//         width: 100%;
+//     }
+
+//     .card-title {
+//         // background: rgba(0, 0, 0, .5);
+//         // background: rgba(168, 0, 25, .75);
+//         top: 40%;
+//         transform: translateY(-40%);
+//         padding: 15px 5px;
+//         position: absolute;
+//         font-size: 2em;
+//         width: 100%;
+//         font-weight: 700;
+//         color: #fff;
+//     }
+// }
+
+.card-with-background {
+    display: flex;
+    text-align: center;
+    min-height: 250px;
+    max-height: 100%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    
+    img {
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    .card-title {
+        padding: 15px 5px;
+        position: relative;
+        font-size: 2em;
+        width: 100%;
+        font-weight: 700;
+        color: #fff;
+        z-index: 5;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+}

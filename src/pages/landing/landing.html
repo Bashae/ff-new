@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>landing</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngIf="!auth.user">
+    <ion-list inset>
+      <ion-item>
+        <ion-label>Username</ion-label>
+        <ion-input [(ngModel)]="username" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input [(ngModel)]="password" type="password"></ion-input>
+      </ion-item>
+      <button class="button--register-now" ion-button (click)="attemptRegistration()">Sign Up</button>
+      <button class="button--login-now" ion-button (click)="attemptLogin()">Sign In</button>
+    </ion-list>
+  </ion-list>
+</ion-content>

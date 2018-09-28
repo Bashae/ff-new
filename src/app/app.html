@@ -1,1 +1,18 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-header>
+    <ion-navbar>
+        <button ion-button icon-only class="button--home" (click)="goToPage('Posts')">
+            <ion-icon name='home'></ion-icon>
+        </button>
+        <ion-title class="custom-title">
+            What's your Secret?
+        </ion-title>
+        <button ion-button icon-only class="button--edit button--login-status" [class.active]="auth.isLoggedIn" (click)="goToPage('Landing')">
+            <ion-icon name='power'></ion-icon>
+        </button>
+        <button ion-button icon-only class="button--edit" (click)="openNewPostModal()">
+            <ion-icon name="create"></ion-icon>
+        </button>
+    </ion-navbar>
+</ion-header>
+
+<ion-nav #content [root]="rootPage"></ion-nav>

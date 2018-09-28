@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Tell us your sin.</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismissModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-card class="card-with-background" *ngIf="cardText">
+    <img src="/assets/imgs/backgrounds/{{cardBackground}}.jpg"  alt="">
+    <div class="card-title" [style.backgroundColor]="cardColor" [style.color]="cardTextColor">
+      {{cardText}}
+    </div>
+  </ion-card>
+  <div padding>
+    <ion-segment [(ngModel)]="newPost">
+      <ion-segment-button value="text">
+        <ion-icon name="create"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="background">
+        <ion-icon name="image"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="overlay">
+        <ion-icon name="radio-button-on" [style.color]="cardColor"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="color">
+        <ion-icon name="radio-button-on" [style.color]="cardTextColor"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+  <div [ngSwitch]="newPost">
+    <ion-item *ngSwitchCase="'text'" class="input-container--textarea">
+      <ion-textarea placeholder="My Secret is..." [(ngModel)]="cardText" (focus)="testInitialClick()"></ion-textarea>
+    </ion-item>
+    <ion-list *ngSwitchCase="'background'">
+      <ion-grid class="image-grid">
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/010.jpg" alt="" (click)="changeBackgroundImage('010')" class="gallery-image" [class.active]="cardBackground == '010'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/011.jpg" alt="" (click)="changeBackgroundImage('011')" class="gallery-image" [class.active]="cardBackground == '011'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/012.jpg" alt="" (click)="changeBackgroundImage('012')" class="gallery-image" [class.active]="cardBackground == '012'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/013.jpg" alt="" (click)="changeBackgroundImage('013')" class="gallery-image" [class.active]="cardBackground == '013'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/014.jpg" alt="" (click)="changeBackgroundImage('014')" class="gallery-image" [class.active]="cardBackground == '014'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/015.jpg" alt="" (click)="changeBackgroundImage('015')" class="gallery-image" [class.active]="cardBackground == '015'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/016.jpg" alt="" (click)="changeBackgroundImage('016')" class="gallery-image" [class.active]="cardBackground == '016'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/017.jpg" alt="" (click)="changeBackgroundImage('017')" class="gallery-image" [class.active]="cardBackground == '017'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/018.jpg" alt="" (click)="changeBackgroundImage('018')" class="gallery-image" [class.active]="cardBackground == '018'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/019.jpg" alt="" (click)="changeBackgroundImage('019')" class="gallery-image" [class.active]="cardBackground == '019'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/020.jpg" alt="" (click)="changeBackgroundImage('020')" class="gallery-image" [class.active]="cardBackground == '020'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/021.jpg" alt="" (click)="changeBackgroundImage('021')" class="gallery-image" [class.active]="cardBackground == '021'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/022.jpg" alt="" (click)="changeBackgroundImage('022')" class="gallery-image" [class.active]="cardBackground == '022'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/023.jpg" alt="" (click)="changeBackgroundImage('023')" class="gallery-image" [class.active]="cardBackground == '023'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/024.jpg" alt="" (click)="changeBackgroundImage('024')" class="gallery-image" [class.active]="cardBackground == '024'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/025.jpg" alt="" (click)="changeBackgroundImage('025')" class="gallery-image" [class.active]="cardBackground == '025'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/026.jpg" alt="" (click)="changeBackgroundImage('026')" class="gallery-image" [class.active]="cardBackground == '026'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/027.jpg" alt="" (click)="changeBackgroundImage('027')" class="gallery-image" [class.active]="cardBackground == '027'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/028.jpg" alt="" (click)="changeBackgroundImage('028')" class="gallery-image" [class.active]="cardBackground == '028'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/029.jpg" alt="" (click)="changeBackgroundImage('029')" class="gallery-image" [class.active]="cardBackground == '029'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/030.jpg" alt="" (click)="changeBackgroundImage('030')" class="gallery-image" [class.active]="cardBackground == '030'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/031.jpg" alt="" (click)="changeBackgroundImage('031')" class="gallery-image" [class.active]="cardBackground == '031'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/032.jpg" alt="" (click)="changeBackgroundImage('032')" class="gallery-image" [class.active]="cardBackground == '032'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/033.jpg" alt="" (click)="changeBackgroundImage('033')" class="gallery-image" [class.active]="cardBackground == '033'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/034.jpg" alt="" (click)="changeBackgroundImage('034')" class="gallery-image" [class.active]="cardBackground == '034'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/035.jpg" alt="" (click)="changeBackgroundImage('035')" class="gallery-image" [class.active]="cardBackground == '035'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/036.jpg" alt="" (click)="changeBackgroundImage('036')" class="gallery-image" [class.active]="cardBackground == '036'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/037.jpg" alt="" (click)="changeBackgroundImage('037')" class="gallery-image" [class.active]="cardBackground == '037'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/038.jpg" alt="" (click)="changeBackgroundImage('038')" class="gallery-image" [class.active]="cardBackground == '038'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/039.jpg" alt="" (click)="changeBackgroundImage('039')" class="gallery-image" [class.active]="cardBackground == '039'"></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/040.jpg" alt="" (click)="changeBackgroundImage('040')" class="gallery-image" [class.active]="cardBackground == '040'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/041.jpg" alt="" (click)="changeBackgroundImage('041')" class="gallery-image" [class.active]="cardBackground == '041'"></ion-col>
+          <ion-col col-4><img src="/assets/imgs/backgrounds/042.jpg" alt="" (click)="changeBackgroundImage('042')" class="gallery-image" [class.active]="cardBackground == '042'"></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+    <ion-list *ngSwitchCase="'overlay'">
+      <ion-grid>
+        <ion-row *ngFor="let colors of colorsArr, let i = index">
+          <ion-col *ngFor="let color of colors" class="color-column">
+            <div [style.backgroundColor]="color.hex" (click)="changeTextBackgroundColor(color.rgb)"></div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+    <ion-list *ngSwitchCase="'color'">
+      <ion-grid>
+        <ion-row *ngFor="let colors of colorsArr, let i = index">
+          <ion-col *ngFor="let color of colors" class="color-column">
+            <div [style.backgroundColor]="color.hex" (click)="changeTextColor(color.rgb)"></div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+  </div>
+  <button [disabled]="isSubmitDisabled" #submitBtn ion-button (click)="submitPost()" style="margin-right: 10px;float:right;">Submit Button</button>
+</ion-content>
