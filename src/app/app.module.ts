@@ -23,6 +23,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Events } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AdMobFree, AdMobFreeBanner, AdMobFreeInterstitial } from '@ionic-native/admob-free';
+import { IonicImageLoader } from 'ionic-image-loader';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
@@ -43,6 +44,7 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    IonicImageLoader.forRoot(),
     NewPostPageModule,
     PostsPageModule,
     LandingPageModule,

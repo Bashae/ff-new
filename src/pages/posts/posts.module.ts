@@ -2,6 +2,9 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA  } from '@angular/co
 import { IonicPageModule } from 'ionic-angular';
 import { PostsPage } from './posts';
 import { ComponentsModule } from '../../components/components.module';
+import { IonicImageLoader } from 'ionic-image-loader';
+
+
 
 @NgModule({
   declarations: [
@@ -9,6 +12,7 @@ import { ComponentsModule } from '../../components/components.module';
   ],
   imports: [
     IonicPageModule.forChild(PostsPage),
+    IonicImageLoader,
     ComponentsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
