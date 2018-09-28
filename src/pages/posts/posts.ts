@@ -31,16 +31,11 @@ export class PostsPage {
 
   runAdmob() {
     const bannerConfig: AdMobFreeBannerConfig = {
-      isTesting: false, 
       id: 'ca-app-pub-8071301998700750/2198021539', 
       autoShow: true
     }
     this.admobFree.banner.config(bannerConfig);
-    this.admobFree.banner.prepare().then((result)=>{
-      console.log(result);
-    },(reason)=>{
-      console.log(reason);
-    });
+    this.admobFree.banner.prepare().then((result)=>{},(reason)=>{});
   }
 
   pullToRefresh(evt) {

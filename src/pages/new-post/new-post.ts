@@ -28,7 +28,7 @@ export class NewPostPage {
   colorsArr: any[];
   initialClick: number;
 
-  isSubmitDisabled: boolean = true;
+  isSubmitDisabled: boolean;
 
   constructor(
     public navCtrl: NavController, 
@@ -166,6 +166,7 @@ export class NewPostPage {
       {'hex': '#FFFFFF', 'rgb': '255, 255, 255'}]
     ];
 
+    this.isSubmitDisabled = true;
     this.prepareAdMob();
   }
 
@@ -178,20 +179,17 @@ export class NewPostPage {
 
   prepareAdMob() {
     const config: AdMobFreeInterstitialConfig = {
-      isTesting: false, 
-      id: 'ca-app-pub-8071301998700750/1646592856', 
-      autoShow: false
+      id: 'ca-app-pub-8071301998700750/1646592856'
     }
+    
     this.admobFree.interstitial.config(config);
     this.admobFree.interstitial.prepare().then(() => {
       this.isSubmitDisabled = false;
     }).catch(() => {
-      this.isSubmitDisabled = false;
+      setTimeout(() => {
+        this.isSubmitDisabled = false;
+      }, 10000)
     })
-    // let _that = this;
-    // setTimeout(() => {
-    //   this.isSubmitDisabled = false;
-    // }, 10000);
   }
 
   launchAdMob() {
