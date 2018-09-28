@@ -165,9 +165,11 @@ export class NewPostPage {
       {'hex': '#FFCCE5', 'rgb': '255, 204, 229'},
       {'hex': '#FFFFFF', 'rgb': '255, 255, 255'}]
     ];
-
-    this.isSubmitDisabled = true;
     this.prepareAdMob();
+  }
+
+  ionViewDidLoad() {
+    this.isSubmitDisabled = true;
   }
 
   testInitialClick() {

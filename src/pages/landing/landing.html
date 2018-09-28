@@ -1,14 +1,12 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>landing</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list *ngIf="!auth.user">
+  <ion-list *ngIf="!auth.user || !auth.user.emailVerified">
     <ion-list inset>
       <ion-item>
         <ion-label>Username</ion-label>
@@ -16,10 +14,28 @@
       </ion-item>
       <ion-item>
         <ion-label>Password</ion-label>
-        <ion-input [(ngModel)]="password" type="password"></ion-input>
+        <ion-input *ngIf="!isWrongPassword" [(ngModel)]="password" type="password"></ion-input>
       </ion-item>
-      <button class="button--register-now" ion-button (click)="attemptRegistration()">Sign Up</button>
-      <button class="button--login-now" ion-button (click)="attemptLogin()">Sign In</button>
     </ion-list>
   </ion-list>
+  <ion-grid>
+    <ion-row *ngIf="!isNotValid && !isWrongPassword">
+      <ion-col col-6>
+        <button class="button--register-now button--authentication" ion-button (click)="attemptRegistration()">Sign Up</button>
+      </ion-col>
+      <ion-col col-6>
+        <button class="button--login-now button--authentication" ion-button (click)="attemptLogin()">Sign In</button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="isWrongPassword">
+      <ion-col col-12>
+        <button class="button--reset-password button--authentication" ion-button (click)="sendPasswordReset()">Send Password Reset</button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="isNotValid">
+      <ion-col col-12>
+        <button class="button--email-vaidation button--authentication" ion-button (click)="sendEmailValidation()">Send Email Validation</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

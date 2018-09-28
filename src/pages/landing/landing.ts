@@ -12,6 +12,9 @@ import { PostsPage } from '../posts/posts';
 export class LandingPage {
   username: string = "";
   password: string = "";
+  isWrongPassword: boolean = false;
+  isNotValid: boolean = false;
+  tempUser: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -50,12 +53,15 @@ export class LandingPage {
             this.navCtrl.push(PostsPage);
           } else {
             this.showAlert("Email has no yet been verified! Please verify your email.");
-            this.auth.sendUserVerificationEmail(res);
+            this.tempUser = res;
+            this.isNotValid = true;
+            this.auth.logOut();
           }
         },
         (err) => { 
           if(err.code == "auth/wrong-password") {
             this.showAlert("Please enter the correct password.");
+            this.isWrongPassword = true;
           }
           if(err.code == "auth/invalid-email") {
             this.showAlert("Please enter a valid email address");
@@ -75,7 +81,7 @@ export class LandingPage {
             this.navCtrl.push(PostsPage);
           } else {
             this.showAlert("Please verify your email before continuing.");
-            this.auth.sendUserVerificationEmail(res);
+            this.isNotValid = true;
           }
         },
         (err) => {
@@ -89,9 +95,24 @@ export class LandingPage {
       )
   }
 
+  sendEmailValidation() {
+    let emailValidation = this.auth.sendUserVerificationEmail(this.tempUser)
+    emailValidation.then(res => {
+      this.showAlert("Email Validation sent!");
+      this.isNotValid = false;
+      this.tempUser = null;
+    })
+  }
+
+  sendPasswordReset() {
+    this.auth.sendPasswordResetEmail(this.username).then(res => {
+      this.showAlert("Reset Password Email sent!");
+      this.isWrongPassword = false;
+    })
+  }
+
   showAlert(msg) {
     const alert = this.alertCtrl.create({
-      title: 'Error!',
       subTitle: msg,
       buttons: ['OK']
     });

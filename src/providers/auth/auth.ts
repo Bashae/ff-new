@@ -33,9 +33,11 @@ export class AuthProvider {
   }
 
   sendUserVerificationEmail(user) {
-    user.user.sendEmailVerification().then((res) => {
-      this.removeAuth();
-    });
+    return user.user.sendEmailVerification();
+  }
+
+  sendPasswordResetEmail(email) {
+    return this.afAuth.auth.sendPasswordResetEmail(email);
   }
 
   signInWithEmail(credentials) {
