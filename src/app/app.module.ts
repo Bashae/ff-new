@@ -25,6 +25,9 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { AdMobFree, AdMobFreeBanner, AdMobFreeInterstitial } from '@ionic-native/admob-free';
 import { IonicImageLoader } from 'ionic-image-loader';
 
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
+
+
 export const firebaseConfig = {
   apiKey: "AIzaSyCr10fnmKIvlRFBw0oxKXu-KC3rf1PMPbo",
   authDomain: "forbiddenfruit-92258.firebaseapp.com",
@@ -71,7 +74,8 @@ export const firebaseConfig = {
     PostProvider,
     FavoriteProvider,
     AdMobFree,
-    AdMobFreeBanner
+    AdMobFreeBanner,
+    GoogleAnalytics
   ]
 })
 export class AppModule {}
