@@ -5,8 +5,6 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { PostProvider } from '../../providers/post/post';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
-
 @Component({
   selector: 'post',
   templateUrl: 'post.html'
@@ -29,8 +27,7 @@ export class PostComponent {
     public navCtrl: NavController,
     public auth: AuthProvider,
     public postService: PostProvider,
-    private socialSharing: SocialSharing,
-    private ga: GoogleAnalytics
+    private socialSharing: SocialSharing
   ) {
 
   }
@@ -70,7 +67,6 @@ export class PostComponent {
   }
 
   favoritePost(post) {
-    this.ga.trackEvent('Interaction', 'Favorite', 'Post', 3);
     if(this.auth.isLoggedIn) {
       if(this.favorited) {
         this.favorited = false;
@@ -96,7 +92,6 @@ export class PostComponent {
     if ( this.auth.isLoggedIn ) {
       if ( this.liked ) {
         if ( this.type == 'good' ) {
-          this.ga.trackEvent('Interaction', 'Like', 'Like:Good', 3);
           if (typed == 'good') {
             this.liked = false;
             this.postService.unlikePost(post, typed);
@@ -105,7 +100,6 @@ export class PostComponent {
             this.postService.updateLike(post, typed);
           }
         } else if ( this.type === 'bad' ) {
-          this.ga.trackEvent('Interaction', 'Like', 'Like:Bad', 3);
           if (typed == 'bad') {
             this.liked = false;
             this.postService.unlikePost(post, typed);
@@ -129,7 +123,6 @@ export class PostComponent {
   }
 
   sharePost() {
-    this.ga.trackEvent('Interaction', 'Share', 'Post', 3);
     let theCanvas: any = document.getElementById('shareCanvas'),
       theContext: any,
       selectedPicture: any = "/assets/imgs/backgrounds/" + this.cardBackground + ".jpg",
