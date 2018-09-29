@@ -19,7 +19,7 @@
     </ion-list>
   </ion-list>
   <ion-grid>
-    <ion-row *ngIf="!isNotValid && !isWrongPassword">
+    <ion-row *ngIf="!isNotValid">
       <ion-col col-6>
         <button class="button--register-now button--authentication" ion-button (click)="attemptRegistration()">Sign Up</button>
       </ion-col>
