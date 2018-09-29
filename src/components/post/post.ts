@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LandingPage } from '../../pages/landing/landing';
 import { AuthProvider } from '../../providers/auth/auth';
@@ -28,7 +28,9 @@ export class PostComponent {
     public auth: AuthProvider,
     public postService: PostProvider,
     private socialSharing: SocialSharing
-  ) {}
+  ) {
+
+  }
 
   ngOnInit() {
     this.favoriteCount = this.postItem.favorites;
@@ -120,8 +122,131 @@ export class PostComponent {
     }
   }
 
-  sharePost(postText) {
-    this.socialSharing.share(postText, "What's your secret?", "", "googleplayurl");
+  sharePost() {
+    let theCanvas: any = document.getElementById('shareCanvas'),
+      theContext: any,
+      selectedPicture: any = "/assets/imgs/backgrounds/" + this.cardBackground + ".jpg",
+
+    // Canvas
+      canvasColor = "rgba(255, 255, 255, 1)",
+
+    // Text
+      textWrapHeight = 50,
+      fontStyle = "bold 65px Arial",
+      fontColor = this.cardTextColor, // For fillText
+      borderWidth = 2,
+      borderColor = this.cardColor; // For strokeText border
+      
+      let _that = this;
+      let pictureWidth = 1000;
+      let pictureHeight = (1000 / 2);
+      let textY = pictureHeight - (pictureHeight / 2);
+      let textWrapWidth = (pictureWidth);
+      let textX = pictureWidth / 2;
+
+    // Secondary Text
+      let secondaryTextWrapHeight = 20,
+        secondaryFontStyle = "bold 35px Arial",
+        secondaryFontColor = this.cardTextColor,
+        secondaryBorderWidth = 2,
+        secondaryBorderColor = this.cardColor,
+        secondaryTextY = pictureHeight - 40;
+
+    // Other stuff
+      if(theCanvas) {
+        theCanvas.width = pictureWidth;
+        theCanvas.height = pictureHeight;
+        if(theCanvas.getContext){
+            theContext = theCanvas.getContext('2d');
+            return drawTheImage(_that);
+        }
+      }
+    
+      function drawTheImage(_that){
+        // Clear Current Image
+        theContext.clearRect(0, 0, theCanvas.width, theCanvas.height);
+    
+        // Fill background
+        theContext.fillStyle = canvasColor;
+        theContext.fillRect(0, 0, theCanvas.width, theCanvas.height);
+    
+        // Display the Image
+        var img = new Image();
+        img.setAttribute('crossOrigin', 'anonymous');
+        img.onload = (event) => {
+            theContext.drawImage(img, theCanvas.width/2 - img.width/2, theCanvas.height/2 - img.height/2);
+            drawText(_that);
+        };
+        img.src = selectedPicture;
+      }
+    
+      function drawText(_that){
+        theContext.font = fontStyle;
+        theContext.textAlign = "center";
+        theContext.fillStyle = fontColor; // fill text
+        theContext.lineWidth = borderWidth;
+        theContext.strokeStyle = borderColor; // stroke border
+        wrapText(_that);
+      }
+    
+      function wrapText(_that) {
+        let currentText = {"text": _that.text};
+        var words = currentText.text.split(' ');
+        var line = '';
+        var currentTextY = textY;
+        for(var n = 0; n < words.length; n++) {
+            var testLine = line + words[n] + ' ';
+            var metrics = theContext.measureText(testLine);
+            var testWidth = metrics.width;
+            if (testWidth > textWrapWidth && n > 0) {
+                theContext.fillText(line, textX, currentTextY); // fill text
+                theContext.strokeText(line, textX, currentTextY); // stroke border
+                line = words[n] + ' ';
+                currentTextY += textWrapHeight;
+            }
+            else {
+                line = testLine;
+            }
+        }
+        
+        theContext.fillText(line, textX, currentTextY); // fill text
+        theContext.strokeText(line, textX, currentTextY); // stroke border
+        drawSecondaryText(_that);
+      }
+
+      function drawSecondaryText(_that) {
+        theContext.font = secondaryFontStyle;
+        theContext.textAlign = "center";
+        theContext.fillStyle = secondaryFontColor; // fill text
+        theContext.lineWidth = secondaryBorderWidth;
+        theContext.strokeStyle = secondaryBorderColor; // stroke border
+        wrapSecondaryText(_that);
+      }
+
+      function wrapSecondaryText(_that) {
+        let followText = {"text": "Created on the Forbidden Fruit App!"}
+        var words = followText.text.split(' ');
+        var line = '';
+        var currentTextY = secondaryTextY;
+        for(var n = 0; n < words.length; n++) {
+            var testLine = line + words[n] + ' ';
+            var metrics = theContext.measureText(testLine);
+            var testWidth = metrics.width;
+            if (testWidth > textWrapWidth && n > 0) {
+                theContext.fillText(line, textX, currentTextY); // fill text
+                theContext.strokeText(line, textX, currentTextY); // stroke border
+                line = words[n] + ' ';
+                currentTextY += textWrapHeight;
+            }
+            else {
+                line = testLine;
+            }
+        }
+        
+        theContext.fillText(line, textX, currentTextY); // fill text
+        theContext.strokeText(line, textX, currentTextY); // stroke border
+        _that.socialSharing.share("Check out this secret!", "What's your secret?", [theCanvas.toDataURL('image/png')], "http://www.facebook.com");
+      }
   }
 
   goToPage() {

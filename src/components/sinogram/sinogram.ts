@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthProvider } from '../../providers/auth/auth';
 import { PostProvider } from '../../providers/post/post';
+import { Events } from 'ionic-angular';
 
 @Component({
   selector: 'sinogram',
@@ -12,12 +13,21 @@ export class SinogramComponent {
 
   constructor(
     public auth: AuthProvider, 
-    public postService: PostProvider
+    public postService: PostProvider,
+    public events: Events
     ) {
     this.finalCount = "50%";
 
+    this.events.subscribe('page:refreshed', (res) => {
+      this.loadSinogram();
+    });
+
+    this.loadSinogram();
+  }
+
+  loadSinogram() {
     if(this.auth.isLoggedIn) {
-      let goodLikeCount, badLikeCount, totalLikes;
+      let goodLikeCount = 0, badLikeCount = 0, totalLikes = 0;
       let goodLikes = this.postService.getGoodLikes();
       goodLikes.then(res => {
         goodLikeCount = res.docs.length; 
@@ -30,20 +40,22 @@ export class SinogramComponent {
         let totalInFrame = 0;
         totalLikes = goodLikeCount + badLikeCount;
 
-        if(goodLikeCount > badLikeCount) {
-          totalInFrame = goodLikeCount - badLikeCount;
-          this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
-          this.finalCount = (50 + this.finalCount);
-          this.finalCount = Math.round(this.finalCount)
-          this.moveArrow(this.finalCount, true);
-        } else {
-          totalInFrame = badLikeCount - goodLikeCount;
-          this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
-          this.finalCount = (50 - this.finalCount);
-          this.finalCount = Math.round(this.finalCount)
-          this.moveArrow(this.finalCount, false);
+        if (goodLikeCount > 0 || badLikeCount > 0) {
+          if(goodLikeCount > badLikeCount) {
+            totalInFrame = goodLikeCount - badLikeCount;
+            this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
+            this.finalCount = (49 + this.finalCount) - ((((totalInFrame * 100) / totalLikes) / 2) / 5);
+            this.finalCount = Math.round(this.finalCount)
+            this.moveArrow(this.finalCount, true);
+          } else {
+            totalInFrame = badLikeCount - goodLikeCount;
+            this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
+            this.finalCount = (51 - this.finalCount) + ((((totalInFrame * 100) / totalLikes) / 2) / 5);
+            this.finalCount = Math.round(this.finalCount)
+            this.moveArrow(this.finalCount, false);
+          }
+          this.finalCount = this.finalCount + "%";
         }
-        this.finalCount = this.finalCount + "%";
       })
     }
   }

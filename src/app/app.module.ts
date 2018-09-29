@@ -71,8 +71,7 @@ export const firebaseConfig = {
     PostProvider,
     FavoriteProvider,
     AdMobFree,
-    AdMobFreeBanner,
-    AdMobFreeInterstitial
+    AdMobFreeBanner
   ]
 })
 export class AppModule {}

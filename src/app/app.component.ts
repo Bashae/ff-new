@@ -10,7 +10,6 @@ import { NewPostPage } from '../pages/new-post/new-post';
 import { LandingPage } from '../pages/landing/landing';
 import { AuthProvider } from '../providers/auth/auth';
 
-import { HomePage } from '../pages/home/home';
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
 @Component({

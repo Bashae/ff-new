@@ -181,7 +181,8 @@ export class NewPostPage {
 
   prepareAdMob() {
     const config: AdMobFreeInterstitialConfig = {
-      id: 'ca-app-pub-8071301998700750/1646592856'
+      id: 'ca-app-pub-8071301998700750/1646592856',
+      autoShow: false
     }
     
     this.admobFree.interstitial.config(config);
@@ -190,7 +191,7 @@ export class NewPostPage {
     }).catch(() => {
       setTimeout(() => {
         this.isSubmitDisabled = false;
-      }, 10000)
+      }, 3000)
     })
   }
 

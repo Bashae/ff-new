@@ -4,6 +4,7 @@ import { PostProvider } from '../../providers/post/post';
 import { AuthProvider } from '../../providers/auth/auth';
 
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
 
 @IonicPage()
 @Component({
@@ -38,7 +39,8 @@ export class PostsPage {
     this.admobFree.banner.prepare().then((result)=>{},(reason)=>{});
   }
 
-  pullToRefresh(evt) {
+  pullToRefresh(evta) {
+    this.hideScroll = false;
     this.postService.getStartPosts()
     .then(res => {
       this.posts = [];
@@ -47,7 +49,9 @@ export class PostsPage {
           this.posts.push(doc.data())
           this.lastItem = doc;
         })
-        evt.complete();
+        this.events.publish('page:refreshed');
+
+        evta.complete();
       } else {
         let post = {
           background: '011',

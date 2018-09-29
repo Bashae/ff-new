@@ -1,10 +1,10 @@
 post {
 
     .button--favorite, .button--share, .button--comment {
-        background: transparent;
+        background: rgba(0, 0, 0, .5);
         box-shadow: none;
         position: absolute;
-        color: rgba(255, 255, 255, 0.25);
+        color: rgba(255, 255, 255, 0.5);
 
         &.active {
             color: #fff;
