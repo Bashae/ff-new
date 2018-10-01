@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.evokeo.forbiddenfruit" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Forbidden Fruit</name>
+    <name>align</name>
     <description>An app to share your secrets with.</description>
     <author email="ice.andrew.media@outlook.com" href="http://andrew-ice.com/">Evokeo</author>
     <content src="index.html" />

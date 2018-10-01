@@ -224,7 +224,7 @@ export class PostComponent {
       }
 
       function wrapSecondaryText(_that) {
-        let followText = {"text": "Created on the Forbidden Fruit App!"}
+        let followText = {"text": "Created on the Align App!"}
         var words = followText.text.split(' ');
         var line = '';
         var currentTextY = secondaryTextY;

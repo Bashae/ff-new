@@ -43,16 +43,20 @@ export class SinogramComponent {
         if (goodLikeCount > 0 || badLikeCount > 0) {
           if(goodLikeCount > badLikeCount) {
             totalInFrame = goodLikeCount - badLikeCount;
-            this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
-            this.finalCount = (49 + this.finalCount) - ((((totalInFrame * 100) / totalLikes) / 2) / 5);
-            this.finalCount = Math.round(this.finalCount)
-            this.moveArrow(this.finalCount, true);
+            if ( totalInFrame !== 0 ) {
+              this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
+              this.finalCount = (49 + this.finalCount) - ((((totalInFrame * 100) / totalLikes) / 2) / 5);
+              this.finalCount = Math.round(this.finalCount)
+              this.moveArrow(this.finalCount, true);
+            }
           } else {
             totalInFrame = badLikeCount - goodLikeCount;
-            this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
-            this.finalCount = (51 - this.finalCount) + ((((totalInFrame * 100) / totalLikes) / 2) / 5);
-            this.finalCount = Math.round(this.finalCount)
-            this.moveArrow(this.finalCount, false);
+            if ( totalInFrame !== 0 ) {
+              this.finalCount = (((totalInFrame * 100) / totalLikes) / 2);
+              this.finalCount = (51 - this.finalCount) + ((((totalInFrame * 100) / totalLikes) / 2) / 5);
+              this.finalCount = Math.round(this.finalCount)
+              this.moveArrow(this.finalCount, false);
+            }
           }
           this.finalCount = this.finalCount + "%";
         }

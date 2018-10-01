@@ -4,7 +4,6 @@ import { PostProvider } from '../../providers/post/post';
 import { AuthProvider } from '../../providers/auth/auth';
 
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
-import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
 
 @IonicPage()
 @Component({
