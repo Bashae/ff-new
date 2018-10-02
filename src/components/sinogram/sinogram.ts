@@ -48,6 +48,8 @@ export class SinogramComponent {
               this.finalCount = (49 + this.finalCount) - ((((totalInFrame * 100) / totalLikes) / 2) / 5);
               this.finalCount = Math.round(this.finalCount)
               this.moveArrow(this.finalCount, true);
+            } else {
+              this.finalCount = 50;
             }
           } else {
             totalInFrame = badLikeCount - goodLikeCount;
@@ -56,6 +58,8 @@ export class SinogramComponent {
               this.finalCount = (51 - this.finalCount) + ((((totalInFrame * 100) / totalLikes) / 2) / 5);
               this.finalCount = Math.round(this.finalCount)
               this.moveArrow(this.finalCount, false);
+            } else {
+              this.finalCount = 50;
             }
           }
           this.finalCount = this.finalCount + "%";
